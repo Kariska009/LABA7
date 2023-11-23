@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Прогрессбар</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        progress {
+            width: 300px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Прогрессбар</h1>
+
+    <progress id="progressBar" value="0" max="100"></progress>
+    <br>
+    <button onclick="increaseProgressBar()">Увеличить на 5%</button>
+
+    <script>
+        function increaseProgressBar() {
+            // Находим элемент progress
+            var progressBar = document.getElementById('progressBar');
+
+            // Увеличиваем значение progressbar на 5%
+            progressBar.value += 5;
+
+            // Ограничиваем максимальное значение 100
+            if (progressBar.value > 100) {
+                progressBar.value = 100;
+            }
+        }
+    </script>
+
+</body>
+</html>

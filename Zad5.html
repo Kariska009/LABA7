@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список новостей</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        button {
+            background-color: #ff5555;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Список новостей</h1>
+
+    <ul id="newsList">
+        <li>
+            <h2>Новость 1</h2>
+            <p>Описание новости 1.</p>
+            <button onclick="deleteNews(this)">Удалить</button>
+        </li>
+        <li>
+            <h2>Новость 2</h2>
+            <p>Описание новости 2.</p>
+            <button onclick="deleteNews(this)">Удалить</button>
+        </li>
+        <!-- Добавьте нужное количество новостей с кнопками Удалить -->
+    </ul>
+
+    <script>
+        function deleteNews(button) {
+            // Находим родительский элемент li, содержащий кнопку
+            var newsItem = button.parentNode;
+            
+            // Удаляем элемент li из списка
+            newsItem.parentNode.removeChild(newsItem);
+        }
+    </script>
+
+</body>
+</html>

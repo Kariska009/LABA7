@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Скрыть/Отобразить текст</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        #displayText {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Скрыть/Отобразить текст</h1>
+
+    <p id="displayText">Это текст, который можно скрыть и отобразить.</p>
+    <button onclick="toggleText()">Нажмите, чтобы скрыть/отобразить текст</button>
+
+    <script>
+        function toggleText() {
+            var displayText = document.getElementById('displayText');
+            // Переключение видимости текста
+            displayText.style.display = (displayText.style.display === 'none' || displayText.style.display === '') ? 'block' : 'none';
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Футбольное поле</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        #footballField {
+            width: 100vw;
+            height: 100vh;
+            background-color: #4CAF50;
+            position: relative;
+        }
+        #football {
+            width: 100px;
+            height: 100px;
+            background-color: #fff;
+            border-radius: 50%;
+            position: absolute;
+            transition: transform 0.5s ease-out;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="footballField" onclick="moveBall(event)">
+        <div id="football"></div>
+    </div>
+
+    <script>
+        function moveBall(event) {
+            var football = document.getElementById('football');
+            
+            // Получаем координаты клика мышкой
+            var clickX = event.clientX;
+            var clickY = event.clientY;
+
+            // Получаем размеры поля и мяча
+            var fieldWidth = window.innerWidth;
+            var fieldHeight = window.innerHeight;
+            var ballSize = 100;
+
+            // Ограничиваем координаты мяча, чтобы не выходил за границы поля
+            var newX = Math.min(fieldWidth - ballSize, Math.max(0, clickX - ballSize / 2));
+            var newY = Math.min(fieldHeight - ballSize, Math.max(0, clickY - ballSize / 2));
+
+            // Устанавливаем новые координаты мяча с анимацией
+            football.style.transform = 'translate(' + newX + 'px, ' + newY + 'px)';
+        }
+    </script>
+
+</body>
+</html>

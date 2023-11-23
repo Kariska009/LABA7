@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вкладки</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+        }
+        #tabsContainer {
+            width: 20%;
+            background-color: #f1f1f1;
+            padding: 20px;
+        }
+        #contentContainer {
+            flex: 1;
+            padding: 20px;
+        }
+        .tab {
+            cursor: pointer;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #ddd;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+        .tab:hover {
+            background-color: #ccc;
+        }
+        .content {
+            display: none;
+        }
+        .content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="tabsContainer">
+        <div class="tab" onclick="openTab('tab1')">Вкладка 1</div>
+        <div class="tab" onclick="openTab('tab2')">Вкладка 2</div>
+        <div class="tab" onclick="openTab('tab3')">Вкладка 3</div>
+    </div>
+
+    <div id="contentContainer">
+        <div id="tab1" class="content active">
+            <h2>Содержимое вкладки 1</h2>
+            <p>Это содержимое первой вкладки.</p>
+        </div>
+        <div id="tab2" class="content">
+            <h2>Содержимое вкладки 2</h2>
+            <p>Это содержимое второй вкладки.</p>
+        </div>
+        <div id="tab3" class="content">
+            <h2>Содержимое вкладки 3</h2>
+            <p>Это содержимое третьей вкладки.</p>
+        </div>
+    </div>
+
+    <script>
+        function openTab(tabId) {
+            // Скрытие всех вкладок
+            var tabs = document.querySelectorAll('.content');
+            tabs.forEach(function(tab) {
+                tab.classList.remove('active');
+            });
+
+            // Отображение активной вкладки
+            var activeTab = document.getElementById(tabId);
+            activeTab.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>

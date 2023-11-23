@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список книг</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+            padding: 10px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+        }
+        li.selected {
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Список книг</h1>
+
+    <ul id="bookList">
+        <li onclick="selectBook(this)">Книга 1</li>
+        <li onclick="selectBook(this)">Книга 2</li>
+        <li onclick="selectBook(this)">Книга 3</li>
+        <!-- Добавьте нужное количество книг -->
+    </ul>
+
+    <script>
+        function selectBook(book) {
+            // Отменяем выделение предыдущей книги
+            var selectedBook = document.querySelector('.selected');
+            if (selectedBook) {
+                selectedBook.classList.remove('selected');
+            }
+
+            // Выделяем выбранную книгу
+            book.classList.add('selected');
+        }
+    </script>
+
+</body>
+</html>
