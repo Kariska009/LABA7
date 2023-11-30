@@ -1,72 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Кнопки с подсказкой</title>
+    <title>Подсказки для кнопок</title>
     <style>
+        /* Стилизация для лучшего визуального восприятия */
         body {
             font-family: Arial, sans-serif;
             text-align: center;
             margin: 50px;
         }
+
         .tooltip {
-            position: absolute;
-            display: none;
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 120px;
             background-color: #333;
             color: #fff;
+            text-align: center;
+            border-radius: 6px;
             padding: 5px;
-            border-radius: 5px;
+            position: absolute;
             z-index: 1;
+            bottom: 125%;
+            /* По умолчанию подсказка появляется сверху от кнопки */
+            left: 50%;
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 0.3s;
         }
-        .tooltip.top {
-            bottom: 100%;
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
         }
-        .tooltip.bottom {
-            top: 100%;
-        }
-        button {
-            margin: 10px;
-            padding: 10px;
-            cursor: pointer;
-            position: relative;
+
+        .tooltip.bottom .tooltiptext {
+            bottom: auto;
+            top: 125%;
+            /* Если подсказка не помещается сверху, появится снизу */
         }
     </style>
 </head>
+
 <body>
 
-    <h1>Кнопки с подсказкой</h1>
+    <h1>Подсказки для кнопок</h1>
 
-    <button onmouseover="showTooltip(this, 'Подсказка сверху')">Кнопка 1</button>
-    <button onmouseover="showTooltip(this, 'Другая подсказка сверху')">Кнопка 2</button>
-    <button onmouseover="showTooltip(this, 'Подсказка снизу')">Кнопка 3</button>
+    <div class="tooltip">
+        <button>Кнопка 1</button>
+        <div class="tooltiptext">Подсказка для кнопки 1</div>
+    </div>
 
-    <div id="tooltip" class="tooltip"></div>
+    <div class="tooltip bottom">
+        <button>Кнопка 2</button>
+        <div class="tooltiptext">Подсказка для кнопки 2, которая появляется снизу</div>
+    </div>
 
-    <script>
-        function showTooltip(button, text) {
-            var tooltip = document.getElementById('tooltip');
-            tooltip.innerText = text;
-
-            // Определяем расположение подсказки (сверху или снизу)
-            var rect = button.getBoundingClientRect();
-            var topSpace = rect.top;
-            var bottomSpace = window.innerHeight - rect.bottom;
-
-            if (topSpace >= bottomSpace) {
-                tooltip.classList.remove('bottom');
-                tooltip.classList.add('top');
-                tooltip.style.top = (rect.top - 10) + 'px';
-            } else {
-                tooltip.classList.remove('top');
-                tooltip.classList.add('bottom');
-                tooltip.style.top = (rect.bottom + 10) + 'px';
-            }
-
-            tooltip.style.left = (rect.left + rect.width / 2 - tooltip.offsetWidth / 2) + 'px';
-            tooltip.style.display = 'block';
-        }
-    </script>
+    <div class="tooltip">
+        <button>Кнопка 3</button>
+        <div class="tooltiptext">Подсказка для кнопки 3</div>
+    </div>
 
 </body>
+
 </html>
